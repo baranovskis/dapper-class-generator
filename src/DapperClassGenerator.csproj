@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>DapperClassGenerator</AssemblyName>
+    <RootNamespace>DapperClassGenerator</RootNamespace>
+    <PackageId>DapperClassGenerator</PackageId>
+    <Title>Dapper POCOs Class Generator</Title>
+    <Authors>Andrejs Baranovskis</Authors>
+    <Company>DapperClassGenerator</Company>
+    <Product>DapperClassGenerator</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\build\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>..\build\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Dapper" Version="2.0.90" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="Humanizer.Core" Version="2.11.10" />
+    <PackageReference Include="Mono.TextTemplating" Version="2.2.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\ModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\ModelValidatorTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModelValidatorTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\ModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ModelValidatorTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelValidatorTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ModelValidatorTemplate.partial.cs">
+      <DependentUpon>ModelValidatorTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\ModelTemplate.partial.cs">
+      <DependentUpon>ModelTemplate.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
