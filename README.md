@@ -1,12 +1,12 @@
 ## Introduction :memo:
 **DapperClassGenerator** is a small tool for POCOs (Plain Old Class Object) generation using T4 text templates.
 
-Features :tada:
+Features
 --------
-- Support [Dapper.Contrib](https://github.com/StackExchange/Dapper/tree/master/Dapper.Contrib)
-- Support [FluentValidation](https://fluentvalidation.net/)
-- Very fast, single query collects all needed data for generation
-- Easy to change, just edit T4 template & process it
+- Supports [Dapper.Contrib](https://github.com/StackExchange/Dapper/tree/master/Dapper.Contrib)
+- Supports [FluentValidation](https://fluentvalidation.net/)
+- Very fast - single query collects all data needed for generation
+- Easy to change - just edit T4 template & process it
 
 ## Synopsis :mag:
 ```sh
